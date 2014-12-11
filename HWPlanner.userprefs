@@ -1,18 +1,39 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone4s.8.0" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Shared/Contracts/BusinessEntityBase.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="TaskyiOS/Resources/es.lproj/Localizable.strings">
     <Files>
-      <File FileName="Shared/HWManager.cs" Line="1" Column="1" />
-      <File FileName="Shared/HW.cs" Line="1" Column="1" />
-      <File FileName="Shared/HWDatabase.cs" Line="1" Column="1" />
-      <File FileName="Shared/HWRepository.cs" Line="1" Column="1" />
-      <File FileName="Shared/SQLite.cs" Line="1" Column="1" />
+      <File FileName="TaskyAndroid/Screens/HWDetailsScreen.cs" Line="1" Column="1" />
+      <File FileName="TaskyiOS/ApplicationLayer/EditingSource.cs" Line="1" Column="1" />
+      <File FileName="TaskyiOS/ApplicationLayer/LocalizableBindingContext.cs" Line="43" Column="43" />
+      <File FileName="TaskyiOS/ApplicationLayer/TaskDialog.cs" Line="1" Column="1" />
       <File FileName="TaskyiOS/Screens/controller_iPhone.cs" Line="1" Column="1" />
       <File FileName="TaskyiOS/AppDelegate.cs" Line="1" Column="1" />
       <File FileName="TaskyiOS/Main.cs" Line="1" Column="1" />
-      <File FileName="Shared/Contracts/BusinessEntityBase.cs" Line="30" Column="30" />
+      <File FileName="Shared/HW.cs" Line="1" Column="1" />
+      <File FileName="Shared/HWDatabase.cs" Line="1" Column="1" />
+      <File FileName="Shared/HWManager.cs" Line="1" Column="1" />
+      <File FileName="Shared/HWRepository.cs" Line="1" Column="1" />
+      <File FileName="Shared/SQLite.cs" Line="1" Column="1" />
+      <File FileName="Shared/Contracts/BusinessEntityBase.cs" Line="1" Column="1" />
       <File FileName="Shared/Contracts/IBusinessEntity.cs" Line="1" Column="1" />
+      <File FileName="TaskyAndroid/Adapters/HWListAdapter.cs" Line="1" Column="1" />
+      <File FileName="TaskyAndroid/Assets/AboutAssets.txt" Line="1" Column="1" />
+      <File FileName="TaskyAndroid/Properties/AndroidManifest.xml" Line="1" Column="1" />
+      <File FileName="TaskyAndroid/Properties/AssemblyInfo.cs" Line="1" Column="1" />
+      <File FileName="TaskyAndroid/Resources/AboutResources.txt" Line="9" Column="9" />
+      <File FileName="TaskyAndroid/Resources/Resource.designer.cs" Line="1" Column="1" />
+      <File FileName="TaskyAndroid/Screens/HomeScreen.cs" Line="1" Column="1" />
+      <File FileName="TaskyiOS/Resources/en.lproj/Localizable.strings" Line="1" Column="1" />
+      <File FileName="TaskyiOS/Resources/es.lproj/Localizable.strings" Line="23" Column="23" />
+      <File FileName="TaskyiOS/Resources/ja.lproj/Localizable.strings" Line="1" Column="1" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="TaskyiOS" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
