@@ -1,11 +1,11 @@
 
-"<new task>" = "<nueva tarea>";
+"<new HW>" = "<nueva tarea>";
 
-"Task Details" = "Task Details";
+"HW Details" = "HW Details";
 "Name" = "Name";
-"task name" = "task name";
+"HW name" = "HW name";
 "Notes" = "Notes";
-"other task info"= "other task info";
+"other HW info"= "other HW info";
 "Done" = "Done";
 "Save" = "Save";
 "Delete" = "Delete";

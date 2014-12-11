@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.1" package="com.xamarin.samples.taskydroid" android:versionCode="2">
-	<application android:label="Tasky" android:debuggable="true" android:icon="@drawable/ic_launcher">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.1" package="com.xamarin.samples.HWPlannerdroid" android:versionCode="2">
+	<application android:debuggable="true" android:icon="@drawable/ic_launcher" android:label="HWPlanner">
 	</application>
 	<uses-sdk />
 </manifest>

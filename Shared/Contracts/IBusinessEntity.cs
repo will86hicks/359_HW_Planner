@@ -1,6 +1,6 @@
 using System;
 
-namespace Tasky.BL.Contracts {
+namespace HWPlanner.BL.Contracts {
 	public interface IBusinessEntity {
 		int ID { get; set; }
 	}

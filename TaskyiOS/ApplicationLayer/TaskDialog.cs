@@ -1,16 +1,16 @@
 using System;
 using MonoTouch.UIKit;
-using Tasky.BL;
+using HWPlanner.BL;
 using MonoTouch.Dialog;
 
-namespace Tasky {
+namespace HWPlanner {
 	/// <summary>
-	/// Wrapper class for Task, to use with MonoTouch.Dialog. If it was just iOS platform
-	/// we could apply these attributes directly to the Task class, but because we share that
+	/// Wrapper class for HW, to use with MonoTouch.Dialog. If it was just iOS platform
+	/// we could apply these attributes directly to the HW class, but because we share that
 	/// with other platforms this wrapper provides a bridge to MonoTouch.Dialog.
 	/// </summary>
-	public class TaskDialog {
-		public TaskDialog (Task task)
+	public class HWDialog {
+		public HWDialog (HW task)
 		{
 			Name = task.Name;
 			Notes = task.Notes;
@@ -32,13 +32,13 @@ namespace Tasky {
 
 		[Localize]
 		[Section ("")]
-		[OnTap ("SaveTask")]
+		[OnTap ("SaveHW")]
 		[Alignment (UITextAlignment.Center)]
     	public string Save;
 		
 		[Localize]
 		[Section ("")]
-		[OnTap ("DeleteTask")]
+		[OnTap ("DeleteHW")]
 		[Alignment (UITextAlignment.Center)]
     	public string Delete;
 	}

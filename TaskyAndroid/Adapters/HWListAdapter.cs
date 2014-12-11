@@ -1,22 +1,22 @@
 using System;
 using System.Collections.Generic;
 using Android.Widget;
-using Tasky.BL;
+using HWPlanner.BL;
 using Android.App;
 using Android;
 
-namespace TaskyAndroid.Adapters {
-	public class TaskListAdapter : BaseAdapter<Task> {
+namespace HWPlannerAndroid.Adapters {
+	public class HWListAdapter : BaseAdapter<HW> {
 		protected Activity context = null;
-		protected IList<Task> tasks = new List<Task>();
+		protected IList<HW> tasks = new List<HW>();
 		
-		public TaskListAdapter (Activity context, IList<Task> tasks) : base ()
+		public HWListAdapter (Activity context, IList<HW> tasks) : base ()
 		{
 			this.context = context;
 			this.tasks = tasks;
 		}
 		
-		public override Task this[int position]
+		public override HW this[int position]
 		{
 			get { return tasks[position]; }
 		}

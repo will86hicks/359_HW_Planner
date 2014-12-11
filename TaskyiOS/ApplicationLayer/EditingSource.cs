@@ -4,9 +4,9 @@ using System.Linq;
 using MonoTouch.UIKit;
 using MonoTouch.Dialog;
 using MonoTouch.Foundation;
-using Tasky.BL;
+using HWPlanner.BL;
 
-namespace Tasky.AL
+namespace HWPlanner.AL
 {
 	// This is our subclass of the fixed-size Source that allows editing
 	public class EditingSource : DialogViewController.Source {
@@ -33,8 +33,8 @@ namespace Tasky.AL
 			var element = section [indexPath.Row] as StringElement;
 			section.Remove (element);
 
-			var dvc = Container as Tasky.Screens.controller_iPhone;
-			dvc.DeleteTaskRow (indexPath.Row);
+			var dvc = Container as HWPlanner.Screens.controller_iPhone;
+			dvc.DeleteHWRow (indexPath.Row);
 		}
 	}
 }

@@ -1,31 +1,31 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using Tasky.BL;
+using HWPlanner.BL;
 
-namespace Tasky.DAL {
-	public class TaskRepository {
-		DL.TaskDatabase db = null;
+namespace HWPlanner.DAL {
+	public class HWRepository {
+		DL.HWDatabase db = null;
 		protected static string dbLocation;		
-		protected static TaskRepository me;		
+		protected static HWRepository me;		
 		
-		static TaskRepository ()
+		static HWRepository ()
 		{
-			me = new TaskRepository();
+			me = new HWRepository();
 		}
 		
-		protected TaskRepository()
+		protected HWRepository()
 		{
 			// set the db location
 			dbLocation = DatabaseFilePath;
 			
 			// instantiate the database	
-			db = new Tasky.DL.TaskDatabase(dbLocation);
+			db = new HWPlanner.DL.HWDatabase(dbLocation);
 		}
 		
 		public static string DatabaseFilePath {
 			get { 
-				var sqliteFilename = "TaskDB.db3";
+				var sqliteFilename = "HWDB.db3";
 #if SILVERLIGHT
 				// Windows Phone expects a local path, not absolute
 	            var path = sqliteFilename;
@@ -64,24 +64,24 @@ namespace Tasky.DAL {
 			}
 		}
 
-		public static Task GetTask(int id)
+		public static HW GetHW(int id)
 		{
-            return me.db.GetItem<Task>(id);
+            return me.db.GetItem<HW>(id);
 		}
 		
-		public static IEnumerable<Task> GetTasks ()
+		public static IEnumerable<HW> GetHWs ()
 		{
-			return me.db.GetItems<Task>();
+			return me.db.GetItems<HW>();
 		}
 		
-		public static int SaveTask (Task item)
+		public static int SaveHW (HW item)
 		{
-			return me.db.SaveItem<Task>(item);
+			return me.db.SaveItem<HW>(item);
 		}
 
-		public static int DeleteTask(int id)
+		public static int DeleteHW(int id)
 		{
-			return me.db.DeleteItem<Task>(id);
+			return me.db.DeleteItem<HW>(id);
 		}
 	}
 }

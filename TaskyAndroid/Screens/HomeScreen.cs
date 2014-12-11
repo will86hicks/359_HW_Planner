@@ -5,14 +5,14 @@ using Android.Graphics;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
-using Tasky.BL;
+using HWPlanner.BL;
 
-namespace TaskyAndroid.Screens {
-	[Activity (Label = "TaskyPro", MainLauncher = true, Icon="@drawable/ic_launcher")]			
+namespace HWPlannerAndroid.Screens {
+	[Activity (Label = "HWPlanner", MainLauncher = true, Icon="@drawable/ic_launcher")]			
 	public class HomeScreen : Activity {
-		protected Adapters.TaskListAdapter taskList;
-		protected IList<Task> tasks;
-		protected Button addTaskButton = null;
+		protected Adapters.HWListAdapter taskList;
+		protected IList<HW> tasks;
+		protected Button addHWButton = null;
 		protected ListView taskListView = null;
 		
 		protected override void OnCreate (Bundle bundle)
@@ -34,21 +34,21 @@ namespace TaskyAndroid.Screens {
 			SetContentView(Resource.Layout.HomeScreen);
 
 			//Find our controls
-			taskListView = FindViewById<ListView> (Resource.Id.lstTasks);
-			addTaskButton = FindViewById<Button> (Resource.Id.btnAddTask);
+			taskListView = FindViewById<ListView> (Resource.Id.lstHWs);
+			addHWButton = FindViewById<Button> (Resource.Id.btnAddHW);
 
 			// wire up add task button handler
-			if(addTaskButton != null) {
-				addTaskButton.Click += (sender, e) => {
-					StartActivity(typeof(TaskDetailsScreen));
+			if(addHWButton != null) {
+				addHWButton.Click += (sender, e) => {
+					StartActivity(typeof(HWDetailsScreen));
 				};
 			}
 			
 			// wire up task click handler
 			if(taskListView != null) {
 				taskListView.ItemClick += (object sender, AdapterView.ItemClickEventArgs e) => {
-					var taskDetails = new Intent (this, typeof (TaskDetailsScreen));
-					taskDetails.PutExtra ("TaskID", tasks[e.Position].ID);
+					var taskDetails = new Intent (this, typeof (HWDetailsScreen));
+					taskDetails.PutExtra ("HWID", tasks[e.Position].ID);
 					StartActivity (taskDetails);
 				};
 			}
@@ -58,10 +58,10 @@ namespace TaskyAndroid.Screens {
 		{
 			base.OnResume ();
 
-			tasks = Tasky.BL.Managers.TaskManager.GetTasks();
+			tasks = HWPlanner.BL.Managers.HWManager.GetHWs();
 			
 			// create our adapter
-			taskList = new Adapters.TaskListAdapter(this, tasks);
+			taskList = new Adapters.HWListAdapter(this, tasks);
 
 			//Hook up our adapter to our ListView
 			taskListView.Adapter = taskList;

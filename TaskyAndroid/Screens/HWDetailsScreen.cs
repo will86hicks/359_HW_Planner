@@ -5,13 +5,13 @@ using Android.Widget;
 using Android.Graphics;
 using Android.Views;
 
-using Tasky.BL;
+using HWPlanner.BL;
 
-namespace TaskyAndroid.Screens {
+namespace HWPlannerAndroid.Screens {
 
-	[Activity (Label = "Task Details")]			
-	public class TaskDetailsScreen : Activity {
-		protected Task task = new Task();
+	[Activity (Label = "HW Details")]			
+	public class HWDetailsScreen : Activity {
+		protected HW task = new HW();
 		protected Button cancelDeleteButton = null;
 		protected EditText notesTextEdit = null;
 		protected EditText nameTextEdit = null;
@@ -31,13 +31,13 @@ namespace TaskyAndroid.Screens {
 			  }
 			}
 
-			int taskID = Intent.GetIntExtra("TaskID", 0);
+			int taskID = Intent.GetIntExtra("HWID", 0);
 			if(taskID > 0) {
-				task = Tasky.BL.Managers.TaskManager.GetTask(taskID);
+				task = HWPlanner.BL.Managers.HWManager.GetHW(taskID);
 			}
 			
 			// set our layout to be the home screen
-			SetContentView(Resource.Layout.TaskDetails);
+			SetContentView(Resource.Layout.HWDetails);
 			nameTextEdit = FindViewById<EditText>(Resource.Id.txtName);
 			notesTextEdit = FindViewById<EditText>(Resource.Id.txtNotes);
 			saveButton = FindViewById<Button>(Resource.Id.btnSave);
@@ -69,14 +69,14 @@ namespace TaskyAndroid.Screens {
 			task.Name = nameTextEdit.Text;
 			task.Notes = notesTextEdit.Text;
 			task.Done = doneCheckbox.Checked;
-			Tasky.BL.Managers.TaskManager.SaveTask(task);
+			HWPlanner.BL.Managers.HWManager.SaveHW(task);
 			Finish();
 		}
 		
 		protected void CancelDelete()
 		{
 			if(task.ID != 0) {
-				Tasky.BL.Managers.TaskManager.DeleteTask(task.ID);
+				HWPlanner.BL.Managers.HWManager.DeleteHW(task.ID);
 			}
 			Finish();
 		}

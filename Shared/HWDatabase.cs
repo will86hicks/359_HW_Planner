@@ -1,31 +1,31 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Tasky.BL;
-using Tasky.DL.SQLite;
+using HWPlanner.BL;
+using HWPlanner.DL.SQLite;
 
-namespace Tasky.DL
+namespace HWPlanner.DL
 {
 	/// <summary>
-	/// TaskDatabase builds on SQLite.Net and represents a specific database, in our case, the Task DB.
+	/// HWDatabase builds on SQLite.Net and represents a specific database, in our case, the HW DB.
 	/// It contains methods for retrieval and persistance as well as db creation, all based on the 
 	/// underlying ORM.
 	/// </summary>
-	public class TaskDatabase : SQLiteConnection
+	public class HWDatabase : SQLiteConnection
 	{
 		static object locker = new object ();
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="Tasky.DL.TaskDatabase"/> TaskDatabase. 
+		/// Initializes a new instance of the <see cref="HWPlanner.DL.HWDatabase"/> HWDatabase. 
 		/// if the database doesn't exist, it will create the database and all the tables.
 		/// </summary>
 		/// <param name='path'>
 		/// Path.
 		/// </param>
-		public TaskDatabase (string path) : base (path)
+		public HWDatabase (string path) : base (path)
 		{
 			// create the tables
-			CreateTable<Task> ();
+			CreateTable<HW> ();
 		}
 		
 		public IEnumerable<T> GetItems<T> () where T : BL.Contracts.IBusinessEntity, new ()
