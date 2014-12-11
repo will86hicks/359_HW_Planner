@@ -52,8 +52,8 @@
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Screens\HomeScreen.cs" />
-    <Compile Include="Adapters\TaskListAdapter.cs" />
-    <Compile Include="Screens\TaskDetailsScreen.cs" />
+    <Compile Include="Adapters\HWListAdapter.cs" />
+    <Compile Include="Screens\HWDetailsScreen.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -62,9 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
-    <AndroidResource Include="Resources\layout\TaskListItem.axml" />
     <AndroidResource Include="Resources\layout\HomeScreen.axml" />
-    <AndroidResource Include="Resources\layout\TaskDetails.axml" />
     <AndroidResource Include="Resources\drawable\bluebutton.axml" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\drawable-hdpi\Icon.png" />
@@ -74,6 +72,8 @@
     <AndroidResource Include="Resources\drawable-mdpi\Icon.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\Icon.png" />
+    <AndroidResource Include="Resources\layout\HWDetails.axml" />
+    <AndroidResource Include="Resources\layout\HWListItem.axml" />
   </ItemGroup>
   <Import Project="..\Shared\Shared.projitems" Label="Shared" Condition="Exists('..\Shared\Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />

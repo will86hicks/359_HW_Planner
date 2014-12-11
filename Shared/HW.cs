@@ -1,10 +1,10 @@
-using Tasky.BL.Contracts;
-using Tasky.DL.SQLite;
+using HWPlanner.BL.Contracts;
+using HWPlanner.DL.SQLite;
 
-namespace Tasky.BL
+namespace HWPlanner.BL
 {
 	/// <summary>
-	/// Represents a Task.
+	/// Represents a HW.
 	/// </summary>
 	public class HW : IBusinessEntity
 	{

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using MonoTouch.UIKit;
 using MonoTouch.Dialog;
-using Tasky.AL;
-using Tasky.BL;
+using HWPlanner.AL;
+using HWPlanner.BL;
 
-namespace Tasky.Screens {
+namespace HWPlanner.Screens {
 	public class controller_iPhone : DialogViewController {
 		List<HW> tasks;
 		
@@ -68,7 +68,7 @@ namespace Tasky.Screens {
 		{
 			tasks = BL.Managers.TaskManager.GetTasks ().ToList ();
 			var newTask = MonoTouch.Foundation.NSBundle.MainBundle.LocalizedString ("<new task>", "<new task>");
-			Root = new RootElement ("Tasky") {
+			Root = new RootElement ("HWPlanner") {
 				new Section() {
 					from t in tasks
 					select (Element) new CheckboxElement((t.Name==""?newTask:t.Name), t.Done)

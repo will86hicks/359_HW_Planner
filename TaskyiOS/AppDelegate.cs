@@ -4,7 +4,7 @@ using System.Linq;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 
-namespace Tasky {
+namespace HWPlanner {
 	[Register ("AppDelegate")]
 	public partial class AppDelegate : UIApplicationDelegate {
 		// class-level declarations
@@ -24,7 +24,7 @@ namespace Tasky {
 			navController = new UINavigationController ();
 
 			// create our home controller 
-			homeViewController = new Tasky.Screens.controller_iPhone();
+			homeViewController = new HWPlanner.Screens.controller_iPhone();
 
 			// Styling
 			UINavigationBar.Appearance.TintColor = UIColor.FromRGB (38, 117 ,255); // nice blue

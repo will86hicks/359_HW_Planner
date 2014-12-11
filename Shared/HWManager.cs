@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using Tasky.BL;
+using HWPlanner.BL;
 
-namespace Tasky.BL.Managers
+namespace HWPlanner.BL.Managers
 {
 	public static class HWManager
 	{
@@ -10,24 +10,24 @@ namespace Tasky.BL.Managers
 		{
 		}
 		
-		public static HW GetTask(int id)
+		public static HW GetHW(int id)
 		{
-			return DAL.HWRepository.GetTask(id);
+			return DAL.HWRepository.GetHW(id);
 		}
 		
-		public static IList<HW> GetTasks ()
+		public static IList<HW> GetHWs ()
 		{
-			return new List<HW>(DAL.HWRepository.GetTasks());
+			return new List<HW>(DAL.HWRepository.GetHWs());
 		}
 		
-		public static int SaveTask (HW item)
+		public static int SaveHW (HW item)
 		{
-			return DAL.HWRepository.SaveTask(item);
+			return DAL.HWRepository.SaveHW(item);
 		}
 		
-		public static int DeleteTask(int id)
+		public static int DeleteHW(int id)
 		{
-			return DAL.HWRepository.DeleteTask(id);
+			return DAL.HWRepository.DeleteHW(id);
 		}
 		
 	}
