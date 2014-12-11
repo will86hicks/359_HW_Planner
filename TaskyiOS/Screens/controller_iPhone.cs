@@ -8,7 +8,7 @@ using Tasky.BL;
 
 namespace Tasky.Screens {
 	public class controller_iPhone : DialogViewController {
-		List<Task> tasks;
+		List<HW> tasks;
 		
 		public controller_iPhone () : base (UITableViewStyle.Plain, null)
 		{

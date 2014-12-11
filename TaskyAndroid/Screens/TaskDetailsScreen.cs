@@ -11,7 +11,7 @@ namespace TaskyAndroid.Screens {
 
 	[Activity (Label = "Task Details")]			
 	public class TaskDetailsScreen : Activity {
-		protected Task task = new Task();
+		protected HW task = new HW();
 		protected Button cancelDeleteButton = null;
 		protected EditText notesTextEdit = null;
 		protected EditText nameTextEdit = null;
@@ -33,7 +33,7 @@ namespace TaskyAndroid.Screens {
 
 			int taskID = Intent.GetIntExtra("TaskID", 0);
 			if(taskID > 0) {
-				task = Tasky.BL.Managers.TaskManager.GetTask(taskID);
+				task = Tasky.BL.Managers.HWManager.GetTask(taskID);
 			}
 			
 			// set our layout to be the home screen
@@ -69,14 +69,14 @@ namespace TaskyAndroid.Screens {
 			task.Name = nameTextEdit.Text;
 			task.Notes = notesTextEdit.Text;
 			task.Done = doneCheckbox.Checked;
-			Tasky.BL.Managers.TaskManager.SaveTask(task);
+			Tasky.BL.Managers.HWManager.SaveTask(task);
 			Finish();
 		}
 		
 		protected void CancelDelete()
 		{
 			if(task.ID != 0) {
-				Tasky.BL.Managers.TaskManager.DeleteTask(task.ID);
+				Tasky.BL.Managers.HWManager.DeleteTask(task.ID);
 			}
 			Finish();
 		}

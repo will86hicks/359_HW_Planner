@@ -10,11 +10,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)SQLite.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)TaskDatabase.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)TaskRepository.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Task.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Contracts\BusinessEntityBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Contracts\IBusinessEntity.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)TaskManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HWRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HWDatabase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HW.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HWManager.cs" />
   </ItemGroup>
 </Project>

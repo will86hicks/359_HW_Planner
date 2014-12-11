@@ -11,7 +11,7 @@ namespace TaskyAndroid.Screens {
 	[Activity (Label = "TaskyPro", MainLauncher = true, Icon="@drawable/ic_launcher")]			
 	public class HomeScreen : Activity {
 		protected Adapters.TaskListAdapter taskList;
-		protected IList<Task> tasks;
+		protected IList<HW> tasks;
 		protected Button addTaskButton = null;
 		protected ListView taskListView = null;
 		
@@ -58,7 +58,7 @@ namespace TaskyAndroid.Screens {
 		{
 			base.OnResume ();
 
-			tasks = Tasky.BL.Managers.TaskManager.GetTasks();
+			tasks = Tasky.BL.Managers.HWManager.GetTasks();
 			
 			// create our adapter
 			taskList = new Adapters.TaskListAdapter(this, tasks);

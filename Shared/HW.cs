@@ -6,9 +6,9 @@ namespace Tasky.BL
 	/// <summary>
 	/// Represents a Task.
 	/// </summary>
-	public class Task : IBusinessEntity
+	public class HW : IBusinessEntity
 	{
-		public Task ()
+		public HW ()
 		{
 		}
 
