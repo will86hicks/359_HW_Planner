@@ -34,7 +34,7 @@ namespace HWPlanner.AL
 			section.Remove (element);
 
 			var dvc = Container as HWPlanner.Screens.controller_iPhone;
-			dvc.DeleteTaskRow (indexPath.Row);
+			dvc.DeleteHWRow (indexPath.Row);
 		}
 	}
 }

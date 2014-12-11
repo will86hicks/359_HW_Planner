@@ -18,39 +18,39 @@ namespace HWPlanner.Screens {
 		protected void Initialize()
 		{
 			NavigationItem.SetRightBarButtonItem (new UIBarButtonItem (UIBarButtonSystemItem.Add), false);
-			NavigationItem.RightBarButtonItem.Clicked += (sender, e) => { ShowTaskDetails(new Task()); };
+			NavigationItem.RightBarButtonItem.Clicked += (sender, e) => { ShowHWDetails(new HW()); };
 		}
 		
 
-		// MonoTouch.Dialog individual TaskDetails view (uses /AL/TaskDialog.cs wrapper class)
+		// MonoTouch.Dialog individual HWDetails view (uses /AL/HWDialog.cs wrapper class)
 		LocalizableBindingContext context;
-		TaskDialog taskDialog;
-		Task currentTask;
+		HWDialog taskDialog;
+		HW currentHW;
 		DialogViewController detailsScreen;
-		protected void ShowTaskDetails (Task task)
+		protected void ShowHWDetails (HW task)
 		{
-			currentTask = task;
-			taskDialog = new TaskDialog (task);
+			currentHW = task;
+			taskDialog = new HWDialog (task);
 			
-			var title = MonoTouch.Foundation.NSBundle.MainBundle.LocalizedString ("Task Details", "Task Details");
+			var title = MonoTouch.Foundation.NSBundle.MainBundle.LocalizedString ("HW Details", "HW Details");
 			context = new LocalizableBindingContext (this, taskDialog, title);
 			detailsScreen = new DialogViewController (context.Root, true);
 			ActivateController(detailsScreen);
 		}
-		public void SaveTask()
+		public void SaveHW()
 		{
 			context.Fetch (); // re-populates with updated values
-			currentTask.Name = taskDialog.Name;
-			currentTask.Notes = taskDialog.Notes;
-			currentTask.Done = taskDialog.Done;
-			BL.Managers.TaskManager.SaveTask(currentTask);
+			currentHW.Name = taskDialog.Name;
+			currentHW.Notes = taskDialog.Notes;
+			currentHW.Done = taskDialog.Done;
+			BL.Managers.HWManager.SaveHW(currentHW);
 			NavigationController.PopViewControllerAnimated (true);
 			//context.Dispose (); // per documentation
 		}
-		public void DeleteTask ()
+		public void DeleteHW ()
 		{
-			if (currentTask.ID >= 0)
-				BL.Managers.TaskManager.DeleteTask (currentTask.ID);
+			if (currentHW.ID >= 0)
+				BL.Managers.HWManager.DeleteHW (currentHW.ID);
 			NavigationController.PopViewControllerAnimated (true);
 		}
 
@@ -66,27 +66,27 @@ namespace HWPlanner.Screens {
 		
 		protected void PopulateTable ()
 		{
-			tasks = BL.Managers.TaskManager.GetTasks ().ToList ();
-			var newTask = MonoTouch.Foundation.NSBundle.MainBundle.LocalizedString ("<new task>", "<new task>");
+			tasks = BL.Managers.HWManager.GetHWs ().ToList ();
+			var newHW = MonoTouch.Foundation.NSBundle.MainBundle.LocalizedString ("<new task>", "<new task>");
 			Root = new RootElement ("HWPlanner") {
 				new Section() {
 					from t in tasks
-					select (Element) new CheckboxElement((t.Name==""?newTask:t.Name), t.Done)
+					select (Element) new CheckboxElement((t.Name==""?newHW:t.Name), t.Done)
 				}
 			}; 
 		}
 		public override void Selected (MonoTouch.Foundation.NSIndexPath indexPath)
 		{
 			var task = tasks[indexPath.Row];
-			ShowTaskDetails(task);
+			ShowHWDetails(task);
 		}
 		public override Source CreateSizingSource (bool unevenRows)
 		{
 			return new EditingSource (this);
 		}
-		public void DeleteTaskRow(int rowId)
+		public void DeleteHWRow(int rowId)
 		{
-			BL.Managers.TaskManager.DeleteTask(tasks[rowId].ID);
+			BL.Managers.HWManager.DeleteHW(tasks[rowId].ID);
 		}
 	}
 }

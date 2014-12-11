@@ -2,11 +2,11 @@
 
 "<new task>" = "<new task>";
 
-"Task Details" = "Detalles de la tarea";
+"HW Details" = "Detalles de la tarea";
 "Name" = "Nombre";
-"task name" = "nombre de la tarea";
+"HW name" = "nombre de la tarea";
 "Notes" = "Notas";
-"other task info"= "﻿otra información de tarea";
+"other HW info"= "﻿otra información de tarea";
 "Done" = "Completo";
 "Save" = "Guardar";
 "Delete" = "Eliminar";
