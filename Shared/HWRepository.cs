@@ -59,7 +59,8 @@ namespace HWPlanner.DAL {
 
 
 
-
+				Console.WriteLine ("HELLLLLLLLLLLLLLLLLLO");
+				Console.WriteLine (path.ToString());
 				return path;	
 			}
 		}

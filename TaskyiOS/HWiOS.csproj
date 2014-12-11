@@ -75,8 +75,8 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Screens\controller_iPhone.cs" />
     <Compile Include="ApplicationLayer\EditingSource.cs" />
-    <Compile Include="ApplicationLayer\TaskDialog.cs" />
     <Compile Include="ApplicationLayer\LocalizableBindingContext.cs" />
+    <Compile Include="ApplicationLayer\HWDialog.cs" />
   </ItemGroup>
   <Import Project="..\Shared\Shared.projitems" Label="Shared" Condition="Exists('..\Shared\Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" Condition="'$(windir)' != '' " />
@@ -115,5 +115,8 @@
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork%402x" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="Screens\MainStoryboard.storyboard" />
   </ItemGroup>
 </Project>

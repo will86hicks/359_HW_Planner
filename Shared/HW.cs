@@ -19,9 +19,9 @@ namespace HWPlanner.BL
 		public string Notes { get; set; }
 
 
-		//public DateTime dueDate{ get; set; }
-		//public Course CourseObj{ get; set; }
-		//public 
+		public DateTime DueDate{ get; set; }
+		public string CourseName{ get; set; }
+		 
 		// new property
 		public bool Done { get; set; }
 	}

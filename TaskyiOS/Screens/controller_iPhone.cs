@@ -8,7 +8,7 @@ using HWPlanner.BL;
 
 namespace HWPlanner.Screens {
 	public class controller_iPhone : DialogViewController {
-		List<HW> tasks;
+		List<HW> hws;
 		
 		public controller_iPhone () : base (UITableViewStyle.Plain, null)
 		{
@@ -24,25 +24,27 @@ namespace HWPlanner.Screens {
 
 		// MonoTouch.Dialog individual HWDetails view (uses /AL/HWDialog.cs wrapper class)
 		LocalizableBindingContext context;
-		HWDialog taskDialog;
+		HWDialog hwDialog;
 		HW currentHW;
 		DialogViewController detailsScreen;
-		protected void ShowHWDetails (HW task)
+		protected void ShowHWDetails (HW hw)
 		{
-			currentHW = task;
-			taskDialog = new HWDialog (task);
+			currentHW = hw;
+			hwDialog = new HWDialog (hw);
 			
 			var title = MonoTouch.Foundation.NSBundle.MainBundle.LocalizedString ("HW Details", "HW Details");
-			context = new LocalizableBindingContext (this, taskDialog, title);
+			context = new LocalizableBindingContext (this, hwDialog, title);
 			detailsScreen = new DialogViewController (context.Root, true);
 			ActivateController(detailsScreen);
 		}
 		public void SaveHW()
 		{
 			context.Fetch (); // re-populates with updated values
-			currentHW.Name = taskDialog.Name;
-			currentHW.Notes = taskDialog.Notes;
-			currentHW.Done = taskDialog.Done;
+			currentHW.Name = hwDialog.Name;
+			currentHW.Notes = hwDialog.Notes;
+			currentHW.DueDate = hwDialog.DueDate;
+			currentHW.CourseName = hwDialog.CourseName;
+			currentHW.Done = hwDialog.Done;
 			BL.Managers.HWManager.SaveHW(currentHW);
 			NavigationController.PopViewControllerAnimated (true);
 			//context.Dispose (); // per documentation
@@ -66,19 +68,19 @@ namespace HWPlanner.Screens {
 		
 		protected void PopulateTable ()
 		{
-			tasks = BL.Managers.HWManager.GetHWs ().ToList ();
-			var newHW = MonoTouch.Foundation.NSBundle.MainBundle.LocalizedString ("<new task>", "<new task>");
+			hws = BL.Managers.HWManager.GetHWs ().ToList ();
+			var newHW = MonoTouch.Foundation.NSBundle.MainBundle.LocalizedString ("<new hw>", "<new hw>");
 			Root = new RootElement ("HWPlanner") {
 				new Section() {
-					from t in tasks
-					select (Element) new CheckboxElement((t.Name==""?newHW:t.Name), t.Done)
+					from h in hws
+					select (Element) new CheckboxElement((h.Name==""?newHW:h.Name), h.Done)
 				}
 			}; 
 		}
 		public override void Selected (MonoTouch.Foundation.NSIndexPath indexPath)
 		{
-			var task = tasks[indexPath.Row];
-			ShowHWDetails(task);
+			var hw = hws[indexPath.Row];
+			ShowHWDetails(hw);
 		}
 		public override Source CreateSizingSource (bool unevenRows)
 		{
@@ -86,7 +88,7 @@ namespace HWPlanner.Screens {
 		}
 		public void DeleteHWRow(int rowId)
 		{
-			BL.Managers.HWManager.DeleteHW(tasks[rowId].ID);
+			BL.Managers.HWManager.DeleteHW(hws[rowId].ID);
 		}
 	}
 }
