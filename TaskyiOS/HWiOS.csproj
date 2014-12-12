@@ -98,8 +98,6 @@
     <BundleResource Include="Resources\Default%402x.png" />
     <BundleResource Include="Resources\Default-Landscape~ipad.png" />
     <BundleResource Include="Resources\Default-Portrait~ipad.png" />
-    <BundleResource Include="Resources\ja.lproj\Localizable.strings" />
-    <BundleResource Include="Resources\es.lproj\Localizable.strings" />
     <BundleResource Include="Resources\en.lproj\Localizable.strings" />
     <BundleResource Include="Resources\Default-Landscape%402x~ipad.png" />
     <BundleResource Include="Resources\Default-Portrait%402x~ipad.png" />

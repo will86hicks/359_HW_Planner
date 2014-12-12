@@ -19,7 +19,6 @@ namespace HWPlanner.Screens {
 		{
 			NavigationItem.SetRightBarButtonItem (new UIBarButtonItem (UIBarButtonSystemItem.Add), false);
 			NavigationItem.RightBarButtonItem.Clicked += (sender, e) => { ShowHWDetails(new HW()); };
-
 			/*UILocalNotification notification = new UILocalNotification();
 			var x = DateTime.Now;
 			notification.FireDate = DateTime.Now.AddSeconds(5);
@@ -37,12 +36,15 @@ namespace HWPlanner.Screens {
 		DialogViewController detailsScreen;
 		protected void ShowHWDetails (HW hw)
 		{
+			currentHW = new HW ();
 			currentHW = hw;
 			hwDialog = new HWDialog (hw);
 			
 			var title = MonoTouch.Foundation.NSBundle.MainBundle.LocalizedString ("Homework Assignment Details", "Homework Assignment Details");
 			context = new LocalizableBindingContext (this, hwDialog, title);
 			detailsScreen = new DialogViewController (context.Root, true);
+			//detailsScreen.TableView.BackgroundColor = UIColor.Red;
+
 			ActivateController(detailsScreen);
 
 		}
@@ -66,11 +68,13 @@ namespace HWPlanner.Screens {
 			var notification = new UILocalNotification();
 
 			// set the fire date (the date time in which it will fire)
-			notification.FireDate = currentHW.DueDate.AddMinutes (-2);
+			double timeTillDue = 2;
+			notification.FireDate = currentHW.DueDate.AddMinutes (-timeTillDue);
 
 			// configure the alert stuff
 			notification.AlertAction = "Homework Alert";
-			notification.AlertBody = currentHW.Name + " is due in one minute!";
+			notification.AlertBody = currentHW.Name + string.Format(" is due in {0} minute!",timeTillDue);
+
 
 			// modify the badge
 			notification.ApplicationIconBadgeNumber = 1;
@@ -104,12 +108,16 @@ namespace HWPlanner.Screens {
 		{
 			hws = BL.Managers.HWManager.GetHWs ().OrderBy(e=>e.DueDate).ToList ();
 			var newHW = MonoTouch.Foundation.NSBundle.MainBundle.LocalizedString ("<new hw>", "<new hw>");
-			Root = new RootElement ("HomeWork Planner") {
+			Root = new RootElement ("Homework Planner") {
 				new Section() {
 					from h in hws
-					select (Element) new CheckboxElement((h.Name==""?newHW:h.Name + " " + h.DueDate.ToShortDateString()), h.Done)
+					select (Element) new CheckboxElement((h.Name==""?newHW:h.Name + " - " + h.DueDate.ToShortDateString() + " - " + h.CourseName), h.Done)
 				}
-			}; 
+			};
+			Root.TableView.BackgroundColor = UIColor.Red;
+			this.NavigationController.NavigationBar.BarTintColor = UIColor.Red;
+
+			//Root.GetContainerTableView ().BackgroundColor = UIColor.Red;
 		}
 		public override void Selected (MonoTouch.Foundation.NSIndexPath indexPath)
 		{

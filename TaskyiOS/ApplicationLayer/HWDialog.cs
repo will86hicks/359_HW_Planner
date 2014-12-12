@@ -16,7 +16,7 @@ namespace HWPlanner {
 		{
 			Name = hw.Name;
 			Notes = hw.Notes;
-			DueDate = hw.DueDate;
+			DueDate = hw.DueDate.ToLocalTime();
 			CourseName = hw.CourseName;
 			Done = hw.Done;
 		}
