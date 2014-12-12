@@ -19,6 +19,9 @@ namespace HWPlanner.Screens {
 		{
 			NavigationItem.SetRightBarButtonItem (new UIBarButtonItem (UIBarButtonSystemItem.Add), false);
 			NavigationItem.RightBarButtonItem.Clicked += (sender, e) => { ShowHWDetails(new HW()); };
+
+
+
 		}
 		
 
@@ -36,6 +39,13 @@ namespace HWPlanner.Screens {
 			context = new LocalizableBindingContext (this, hwDialog, title);
 			detailsScreen = new DialogViewController (context.Root, true);
 			ActivateController(detailsScreen);
+
+			/*UILocalNotification notification = new UILocalNotification();
+			var x = DateTime.Now;
+			notification.FireDate = DateTime.Now.AddSeconds(5);
+			notification.AlertAction = "View Alert";
+			notification.AlertBody = "Your one minute alert has fired!";
+			UIApplication.SharedApplication.ScheduleLocalNotification(notification);*/
 		}
 		public void SaveHW()
 		{
@@ -69,9 +79,9 @@ namespace HWPlanner.Screens {
 		
 		protected void PopulateTable ()
 		{
-			hws = BL.Managers.HWManager.GetHWs ().ToList ();
+			hws = BL.Managers.HWManager.GetHWs ().OrderBy(e=>e.DueDate).ToList ();
 			var newHW = MonoTouch.Foundation.NSBundle.MainBundle.LocalizedString ("<new hw>", "<new hw>");
-			Root = new RootElement ("HWPlanner") {
+			Root = new RootElement ("HomeWork Planner") {
 				new Section() {
 					from h in hws
 					select (Element) new CheckboxElement((h.Name==""?newHW:h.Name + " " + h.DueDate.ToShortDateString()), h.Done)

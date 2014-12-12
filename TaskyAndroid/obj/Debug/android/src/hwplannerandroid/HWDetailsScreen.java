@@ -11,7 +11,7 @@ public class HWDetailsScreen
 		__md_methods = 
 			"n_onCreate:(Landroid/os/Bundle;)V:GetOnCreate_Landroid_os_Bundle_Handler\n" +
 			"";
-		mono.android.Runtime.register ("HWPlannerAndroid.HWDetailsScreen, TaskyAndroid, Version=1.0.5458.29899, Culture=neutral, PublicKeyToken=null", HWDetailsScreen.class, __md_methods);
+		mono.android.Runtime.register ("HWPlannerAndroid.HWDetailsScreen, TaskyAndroid, Version=1.0.5458.33988, Culture=neutral, PublicKeyToken=null", HWDetailsScreen.class, __md_methods);
 	}
 
 
@@ -19,7 +19,7 @@ public class HWDetailsScreen
 	{
 		super ();
 		if (getClass () == HWDetailsScreen.class)
-			mono.android.TypeManager.Activate ("HWPlannerAndroid.HWDetailsScreen, TaskyAndroid, Version=1.0.5458.29899, Culture=neutral, PublicKeyToken=null", "", this, new java.lang.Object[] {  });
+			mono.android.TypeManager.Activate ("HWPlannerAndroid.HWDetailsScreen, TaskyAndroid, Version=1.0.5458.33988, Culture=neutral, PublicKeyToken=null", "", this, new java.lang.Object[] {  });
 	}
 
 

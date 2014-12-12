@@ -19,6 +19,10 @@ namespace HWPlanner.BL.Managers
 		public static IList<HW> GetHWs ()
 		{
 			return new List<HW>(DAL.HWRepository.GetHWs());
+			//var x = new List<HW>(DAL.HWRepository.GetHWs());
+			//return x;
+			//var x = new List<HW>(DAL.HWRepository.GetHWs());
+
 		}
 		
 		public static int SaveHW (HW item)
