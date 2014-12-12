@@ -18,6 +18,7 @@ public final class R {
     public static final class id {
         public static final int DueDateText=0x7f05000c;
         public static final int DueTimeButton=0x7f050008;
+        public static final int DueTimeText=0x7f05000d;
         public static final int NameLabel=0x7f050002;
         public static final int NotesLabel=0x7f050005;
         public static final int TaskDetailsHeader=0x7f050003;
@@ -27,8 +28,8 @@ public final class R {
         public static final int btnSave=0x7f05000a;
         public static final int chkDone=0x7f050007;
         public static final int lstHWs=0x7f050001;
-        public static final int lstItemTask=0x7f05000d;
-        public static final int txtDescription=0x7f05000e;
+        public static final int lstItemTask=0x7f05000e;
+        public static final int txtDescription=0x7f05000f;
         public static final int txtName=0x7f050004;
         public static final int txtNotes=0x7f050006;
     }

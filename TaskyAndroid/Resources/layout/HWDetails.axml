@@ -18,14 +18,14 @@
         android:maxLines="1" />
     <TextView
         android:id="@+id/NotesLabel"
-        android:text="Notes:"
+        android:text="Assignments:"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtName" />
     <EditText
         android:id="@+id/txtNotes"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="80.4dp"
         android:layout_below="@+id/NotesLabel"
         android:maxLines="1"
         android:imeOptions="actionDone" />
@@ -67,6 +67,12 @@
         android:text="Due Time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btnDueDate"
+        android:layout_below="@+id/DueTimeText"
         android:id="@+id/DueTimeButton" />
+    <TextView
+        android:text="Due Time:"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/DueTimeText"
+        android:layout_below="@+id/btnDueDate" />
 </RelativeLayout>

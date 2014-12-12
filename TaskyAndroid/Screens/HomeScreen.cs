@@ -7,6 +7,8 @@ using Android.Views;
 using Android.Widget;
 using HWPlanner.BL;
 using System;
+using System.Linq;
+using Java.Lang;
 
 namespace HWPlannerAndroid.Screens {
 	[Activity (Label = "HWPlanner", MainLauncher = true, Icon="@drawable/ic_launcher")]			
@@ -59,7 +61,7 @@ namespace HWPlannerAndroid.Screens {
 		{
 			base.OnResume ();
 
-			tasks = HWPlanner.BL.Managers.HWManager.GetHWs();
+			tasks = HWPlanner.BL.Managers.HWManager.GetHWs().OrderBy(e=>e.DueDate).ToList();
 			
 			// create our adapter
 			taskList = new Adapters.HWListAdapter(this, tasks);

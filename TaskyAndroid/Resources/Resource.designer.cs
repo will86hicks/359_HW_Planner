@@ -72,6 +72,9 @@ namespace HWAndroid
 			// aapt resource value: 0x7f050008
 			public const int DueTimeButton = 2131034120;
 			
+			// aapt resource value: 0x7f05000d
+			public const int DueTimeText = 2131034125;
+			
 			// aapt resource value: 0x7f050002
 			public const int NameLabel = 2131034114;
 			
@@ -99,11 +102,11 @@ namespace HWAndroid
 			// aapt resource value: 0x7f050001
 			public const int lstHWs = 2131034113;
 			
-			// aapt resource value: 0x7f05000d
-			public const int lstItemTask = 2131034125;
-			
 			// aapt resource value: 0x7f05000e
-			public const int txtDescription = 2131034126;
+			public const int lstItemTask = 2131034126;
+			
+			// aapt resource value: 0x7f05000f
+			public const int txtDescription = 2131034127;
 			
 			// aapt resource value: 0x7f050004
 			public const int txtName = 2131034116;

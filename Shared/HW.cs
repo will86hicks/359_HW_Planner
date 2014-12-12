@@ -11,6 +11,8 @@ namespace HWPlanner.BL
 		public HW ()
 		{
 			DueDate = DateTime.Today;
+			TimeHour = DateTime.Now.Hour;
+			TimeMinute = DateTime.Now.Minute;
 		}
 
 		[PrimaryKey, AutoIncrement]

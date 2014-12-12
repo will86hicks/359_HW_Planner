@@ -6,7 +6,8 @@ using Android.Graphics;
 using Android.Views;
 using System;
 using HWPlanner.BL;
-
+using Java.Lang;
+using System.Linq;
 namespace HWPlannerAndroid.Screens {
 
 	[Activity (Label = "HW Details")]			
@@ -22,7 +23,7 @@ namespace HWPlannerAndroid.Screens {
 		DateTime _date;
 		DateTime time = DateTime.Today;
 		//setting up time
-		private TextView time_display;
+		string AM_PM;
 		protected Button timeButton;
 		private int hour;
 		private int minute;
@@ -88,23 +89,30 @@ namespace HWPlannerAndroid.Screens {
 
 			//TIME!!!
 			// Capture our View elements
-			//time_display = FindViewById<TextView> (HWAndroid.Resource.Id.timeDisplay);
 			timeButton = FindViewById<Button> (HWAndroid.Resource.Id.DueTimeButton);
 
 			// Add a click listener to the button
 			timeButton.Click += (o, e) => ShowDialog (TIME_DIALOG_ID);
 
 			// Get the current time
-			hour = DateTime.Now.Hour;
-			minute = DateTime.Now.Minute;
+			hour = task.TimeHour;
+			minute = task.TimeMinute;
+			string time2;
+			if(hour < 12) {
+				AM_PM = "AM";
+			} else {
+				AM_PM = "PM";
+			}
 
-			// Display the current date
-			UpdateDisplay ();
-		}
-		private void UpdateDisplay ()
-		{
-			string time = string.Format ("{0}:{1}", hour, minute.ToString ().PadLeft (2, '0'));
-			timeButton.Text = time;
+			if(hour == 0){
+				time2 = string.Format ("{0}:{1}:{2}", hour+12, minute.ToString ().PadLeft (2, '0'),AM_PM);
+			}else if(hour <= 12){
+				time2 = string.Format ("{0}:{1}:{2}", hour, minute.ToString ().PadLeft (2, '0'),AM_PM);
+			}else{
+				time2 = string.Format ("{0}:{1}:{2}", hour-12, minute.ToString ().PadLeft (2, '0'),AM_PM);
+			}
+			timeButton.Text = time2;
+
 		}
 		protected override Dialog OnCreateDialog (int id)
 		{
@@ -127,7 +135,21 @@ namespace HWPlannerAndroid.Screens {
 		{
 			hour = e.HourOfDay;
 			minute = e.Minute;
-			UpdateDisplay ();
+			string time2;
+			if(hour < 12) {
+				AM_PM = "AM";
+			} else {
+				AM_PM = "PM";
+			}
+
+			if(hour == 0){
+				time2 = string.Format ("{0}:{1}:{2}", hour+12, minute.ToString ().PadLeft (2, '0'),AM_PM);
+			}else if(hour <= 12){
+				time2 = string.Format ("{0}:{1}:{2}", hour, minute.ToString ().PadLeft (2, '0'),AM_PM);
+			}else{
+				time2 = string.Format ("{0}:{1}:{2}", hour-12, minute.ToString ().PadLeft (2, '0'),AM_PM);
+			}
+			timeButton.Text = time2;
 		}
 		protected void Save()
 		{
@@ -139,6 +161,8 @@ namespace HWPlannerAndroid.Screens {
 			} else {
 				task.DueDate = time.AddDays(1.0);
 			}
+			task.TimeHour = hour;
+			task.TimeMinute = minute;
 			HWPlanner.BL.Managers.HWManager.SaveHW(task);
 			Finish();
 		}
@@ -150,5 +174,6 @@ namespace HWPlannerAndroid.Screens {
 			}
 			Finish();
 		}
+			
 	}
 }
