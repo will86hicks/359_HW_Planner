@@ -1,4 +1,4 @@
-/Users/student/Desktop/359_HW_Planner/TaskyAndroid/bin/Debug/HWAndroid.dll
+/Users/student/Desktop/359_HW_Planner/HWPlannerAndroid/bin/Debug/HWAndroid.dll
 /Library/Frameworks/Mono.framework/External/xbuild-frameworks/MonoAndroid/v1.0/System.dll
 /Library/Frameworks/Mono.framework/External/xbuild-frameworks/MonoAndroid/v1.0/System.Xml.dll
 /Library/Frameworks/Mono.framework/External/xbuild-frameworks/MonoAndroid/v4.0.3/Mono.Android.dll
