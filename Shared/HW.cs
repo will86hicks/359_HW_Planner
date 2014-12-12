@@ -11,6 +11,7 @@ namespace HWPlanner.BL
 	{
 		public HW ()
 		{
+			DueDate = DateTime.Today;
 		}
 
 		[PrimaryKey, AutoIncrement]

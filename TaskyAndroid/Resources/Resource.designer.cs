@@ -12,8 +12,7 @@
 [assembly: Android.Runtime.ResourceDesignerAttribute("HWPlannerAndroid.Resource", IsApplication=true)]
 
 namespace HWPlannerAndroid
-{
-	
+{	
 	
 	[System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Android.Build.HWs", "1.0.0.0")]
 	public partial class Resource

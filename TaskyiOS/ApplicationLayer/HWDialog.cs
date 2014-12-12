@@ -10,6 +10,8 @@ namespace HWPlanner {
 	/// with other platforms this wrapper provides a bridge to MonoTouch.Dialog.
 	/// </summary>
 	public class HWDialog {
+
+		//private DateTime Bummfuck;
 		public HWDialog (HW hw)
 		{
 			Name = hw.Name;
@@ -29,7 +31,21 @@ namespace HWPlanner {
 
 		[Localize]
 		[Entry("due date")]
-		public DateTime DueDate{ get; set; }
+
+		public DateTime DueDate {
+
+			get;
+
+
+			set ;//{
+				//date = value;
+				//DateTime date = new DateTime ();
+				//date = DateTime.Today;
+				//DueDate = date;
+			//}
+		}
+	
+
 
 		[Localize]
 		[Entry("course name")]

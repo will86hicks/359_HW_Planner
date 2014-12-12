@@ -8,6 +8,7 @@ namespace HWPlanner.BL.Managers
 	{
 		static HWManager ()
 		{
+
 		}
 		
 		public static HW GetHW(int id)

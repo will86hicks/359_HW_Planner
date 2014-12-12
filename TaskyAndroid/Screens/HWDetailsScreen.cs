@@ -7,7 +7,7 @@ using Android.Views;
 
 using HWPlanner.BL;
 
-namespace HWPlannerAndroid.Screens {
+namespace HWPlannerAndroid {
 
 	[Activity (Label = "HW Details")]			
 	public class HWDetailsScreen : Activity {

@@ -31,7 +31,8 @@ namespace HWPlanner.DL
 		public IEnumerable<T> GetItems<T> () where T : BL.Contracts.IBusinessEntity, new ()
 		{
             lock (locker) {
-                return (from i in Table<T> () select i).ToList ();
+				//return (from i in Table<T> () select i).ToList ();
+				return (from i in Table<T> () select i).ToList ();
             }
 		}
 

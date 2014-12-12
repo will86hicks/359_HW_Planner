@@ -32,7 +32,7 @@ namespace HWPlanner.Screens {
 			currentHW = hw;
 			hwDialog = new HWDialog (hw);
 			
-			var title = MonoTouch.Foundation.NSBundle.MainBundle.LocalizedString ("HW Details", "HW Details");
+			var title = MonoTouch.Foundation.NSBundle.MainBundle.LocalizedString ("Homework Assignment Details", "Homework Assignment Details");
 			context = new LocalizableBindingContext (this, hwDialog, title);
 			detailsScreen = new DialogViewController (context.Root, true);
 			ActivateController(detailsScreen);
@@ -42,6 +42,7 @@ namespace HWPlanner.Screens {
 			context.Fetch (); // re-populates with updated values
 			currentHW.Name = hwDialog.Name;
 			currentHW.Notes = hwDialog.Notes;
+			//Added these properties
 			currentHW.DueDate = hwDialog.DueDate;
 			currentHW.CourseName = hwDialog.CourseName;
 			currentHW.Done = hwDialog.Done;
@@ -73,7 +74,7 @@ namespace HWPlanner.Screens {
 			Root = new RootElement ("HWPlanner") {
 				new Section() {
 					from h in hws
-					select (Element) new CheckboxElement((h.Name==""?newHW:h.Name), h.Done)
+					select (Element) new CheckboxElement((h.Name==""?newHW:h.Name + " " + h.DueDate.ToShortDateString()), h.Done)
 				}
 			}; 
 		}

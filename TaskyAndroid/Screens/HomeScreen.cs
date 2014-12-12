@@ -7,7 +7,7 @@ using Android.Views;
 using Android.Widget;
 using HWPlanner.BL;
 
-namespace HWPlannerAndroid.Screens {
+namespace HWPlannerAndroid {
 	[Activity (Label = "HWPlanner", MainLauncher = true, Icon="@drawable/ic_launcher")]			
 	public class HomeScreen : Activity {
 		protected Adapters.HWListAdapter taskList;
