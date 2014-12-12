@@ -14,7 +14,7 @@ public class HWListAdapter
 			"n_getCount:()I:GetGetCountHandler\n" +
 			"n_getView:(ILandroid/view/View;Landroid/view/ViewGroup;)Landroid/view/View;:GetGetView_ILandroid_view_View_Landroid_view_ViewGroup_Handler\n" +
 			"";
-		mono.android.Runtime.register ("HWPlannerAndroid.Adapters.HWListAdapter, HWAndroid, Version=1.0.5459.1040, Culture=neutral, PublicKeyToken=null", HWListAdapter.class, __md_methods);
+		mono.android.Runtime.register ("HWPlannerAndroid.Adapters.HWListAdapter, HWAndroid, Version=1.0.5459.10500, Culture=neutral, PublicKeyToken=null", HWListAdapter.class, __md_methods);
 	}
 
 
@@ -22,7 +22,7 @@ public class HWListAdapter
 	{
 		super ();
 		if (getClass () == HWListAdapter.class)
-			mono.android.TypeManager.Activate ("HWPlannerAndroid.Adapters.HWListAdapter, HWAndroid, Version=1.0.5459.1040, Culture=neutral, PublicKeyToken=null", "", this, new java.lang.Object[] {  });
+			mono.android.TypeManager.Activate ("HWPlannerAndroid.Adapters.HWListAdapter, HWAndroid, Version=1.0.5459.10500, Culture=neutral, PublicKeyToken=null", "", this, new java.lang.Object[] {  });
 	}
 
 

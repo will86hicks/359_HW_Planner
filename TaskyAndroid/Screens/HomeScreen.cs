@@ -11,7 +11,7 @@ using System.Linq;
 using Java.Lang;
 
 namespace HWPlannerAndroid.Screens {
-	[Activity (Label = "HWPlanner", MainLauncher = true, Icon="@drawable/ic_launcher")]			
+	[Activity (Label = "Homework Planner", MainLauncher = true, Icon="@drawable/ic_launcher")]			
 	public class HomeScreen : Activity {
 		protected Adapters.HWListAdapter taskList;
 		protected IList<HW> tasks;
