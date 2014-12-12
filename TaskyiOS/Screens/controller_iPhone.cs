@@ -20,7 +20,12 @@ namespace HWPlanner.Screens {
 			NavigationItem.SetRightBarButtonItem (new UIBarButtonItem (UIBarButtonSystemItem.Add), false);
 			NavigationItem.RightBarButtonItem.Clicked += (sender, e) => { ShowHWDetails(new HW()); };
 
-
+			/*UILocalNotification notification = new UILocalNotification();
+			var x = DateTime.Now;
+			notification.FireDate = DateTime.Now.AddSeconds(5);
+			notification.AlertAction = "View Alert";
+			notification.AlertBody = "Your one minute alert has fired!";
+			UIApplication.SharedApplication.ScheduleLocalNotification(notification);*/
 
 		}
 		
@@ -40,24 +45,41 @@ namespace HWPlanner.Screens {
 			detailsScreen = new DialogViewController (context.Root, true);
 			ActivateController(detailsScreen);
 
-			/*UILocalNotification notification = new UILocalNotification();
-			var x = DateTime.Now;
-			notification.FireDate = DateTime.Now.AddSeconds(5);
-			notification.AlertAction = "View Alert";
-			notification.AlertBody = "Your one minute alert has fired!";
-			UIApplication.SharedApplication.ScheduleLocalNotification(notification);*/
 		}
 		public void SaveHW()
 		{
 			context.Fetch (); // re-populates with updated values
 			currentHW.Name = hwDialog.Name;
 			currentHW.Notes = hwDialog.Notes;
+
 			//Added these properties
-			currentHW.DueDate = hwDialog.DueDate;
+			currentHW.DueDate = hwDialog.DueDate.AddHours(-6);		//For Some Reason it's adding 6 Hours to the DueDate when saving??
 			currentHW.CourseName = hwDialog.CourseName;
+
 			currentHW.Done = hwDialog.Done;
 			BL.Managers.HWManager.SaveHW(currentHW);
 			NavigationController.PopViewControllerAnimated (true);
+
+
+			// create the notification
+			var notification = new UILocalNotification();
+
+			// set the fire date (the date time in which it will fire)
+			notification.FireDate = currentHW.DueDate.AddMinutes (-1);
+
+			// configure the alert stuff
+			notification.AlertAction = "Homework Alert";
+			notification.AlertBody = currentHW.Name + " is due in one minute!";
+
+			// modify the badge
+			notification.ApplicationIconBadgeNumber = 1;
+
+			// set the sound to be the default sound
+			notification.SoundName = UILocalNotification.DefaultSoundName;
+
+			// schedule it
+			UIApplication.SharedApplication.ScheduleLocalNotification(notification);
+
 			//context.Dispose (); // per documentation
 		}
 		public void DeleteHW ()
@@ -92,6 +114,8 @@ namespace HWPlanner.Screens {
 		{
 			var hw = hws[indexPath.Row];
 			ShowHWDetails(hw);
+
+
 		}
 		public override Source CreateSizingSource (bool unevenRows)
 		{
