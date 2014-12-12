@@ -3,14 +3,23 @@ using Android.App;
 using Android.OS;
 using Android.Widget;
 using Android.Graphics;
+using Android.Graphics.Drawables;
 using Android.Views;
 using System;
 using HWPlanner.BL;
 using Java.Lang;
 using System.Linq;
+
+using Android.Content;
+
+using String = System.String;
+using Android.Support.V4.App;
+
 namespace HWPlannerAndroid.Screens {
 
-	[Activity (Label = "HW Details")]			
+
+
+	[Activity (Label = "Homework Details")]			
 	public class HWDetailsScreen : Activity {
 		protected HW task = new HW();
 		protected Button cancelDeleteButton = null;
@@ -28,11 +37,15 @@ namespace HWPlannerAndroid.Screens {
 		private int hour;
 		private int minute;
 		const int TIME_DIALOG_ID = 1;
+		private static readonly int ButtonClickNotificationId = 1000;
 
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
-			
+
+			ColorDrawable colorDrawable = new ColorDrawable(Color.ParseColor("#ff0000"));
+			ActionBar.SetBackgroundDrawable(colorDrawable);
+
 			View titleView = Window.FindViewById(Android.Resource.Id.Title);
 			if (titleView != null) {
 			  IViewParent parent = titleView.Parent;
@@ -164,6 +177,22 @@ namespace HWPlannerAndroid.Screens {
 			task.TimeHour = hour;
 			task.TimeMinute = minute;
 			HWPlanner.BL.Managers.HWManager.SaveHW(task);
+
+
+			//Context.getSystemService (Context.ALARM_SERVICE);
+			// Build the notification
+			NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
+				.SetAutoCancel(true) // dismiss the notification from the notification area when the user clicks on it
+				// .SetContentIntent(resultPendingIntent) // start up this activity when the user clicks the intent.
+				.SetContentTitle("Due Date Alert") // Set the title
+				.SetSmallIcon(HWAndroid.Resource.Drawable.bluebutton) // This is the icon to display
+				.SetContentText(String.Format("Your HW is due in 1 minute")); // the message to display.
+
+			// Finally publish the notification
+			NotificationManager notificationManager = (NotificationManager)GetSystemService(Context.NotificationService);
+			notificationManager.Notify(ButtonClickNotificationId, builder.Build());
+
+
 			Finish();
 		}
 		

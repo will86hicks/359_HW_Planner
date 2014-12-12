@@ -9,32 +9,41 @@ using HWPlanner.BL;
 using System;
 using System.Linq;
 using Java.Lang;
+using Android.Graphics.Drawables;
 
 namespace HWPlannerAndroid.Screens {
-	[Activity (Label = "HWPlanner", MainLauncher = true, Icon="@drawable/ic_launcher")]			
+	[Activity (Label = "Homework Planner", MainLauncher = true, Icon="@drawable/ic_launcher")]
 	public class HomeScreen : Activity {
 		protected Adapters.HWListAdapter taskList;
 		protected IList<HW> tasks;
 		protected Button addHWButton = null;
 		protected ListView taskListView = null;
-		
+
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
-			
+
+			//ColorDrawable colorDrawable = new ColorDrawable(Color.ParseColor("#ffFEBB31"));
+			ColorDrawable colorDrawable = new ColorDrawable(Color.ParseColor("#ff0000"));
+			ActionBar.SetBackgroundDrawable(colorDrawable);
 
 			View titleView = Window.FindViewById(Android.Resource.Id.Title);
-			if (titleView != null) {
-			  IViewParent parent = titleView.Parent;
-			  if (parent != null && (parent is View)) {
-			    View parentView = (View)parent;
-			    parentView.SetBackgroundColor(Color.Rgb(0xFF, 0xFF ,0xFF)); //38, 117 ,255
-			  }
-			}
+//			if (titleView != null) {
+//			  	IViewParent parent = titleView.Parent;
+//			  	if (parent != null && (parent is View)) {
+//			    	View parentView = (View)parent;
+//			    	parentView.SetBackgroundColor(Color.Rgb(0xFF, 0xFF ,0xFF)); //38, 117 ,255
+//					this.NavigationController.NavigationBar.BarTintColor = UIColor.Red;
+//					this.Window.DecorView.SetBackgroundColor(Color.Red);
+//					parentView.SetBackgroundColor(Color.Red);
+//
+//
+//			 	}
+//			}
 
 
 			// set our layout to be the home screen
-			SetContentView(HWAndroid.Resource.Layout.HomeScreen);
+		SetContentView(HWAndroid.Resource.Layout.HomeScreen);
 
 			//Find our controls
 			taskListView = FindViewById<ListView> (HWAndroid.Resource.Id.lstHWs);
