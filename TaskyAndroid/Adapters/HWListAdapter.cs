@@ -44,8 +44,13 @@ namespace HWPlannerAndroid.Adapters {
 					Android.Resource.Layout.SimpleListItemChecked,
 					parent, 
 					false)) as CheckedTextView;
-
-			view.SetText (item.Name==""?"<new task>":item.Name + "   " + item.DueDate.ToShortDateString(), TextView.BufferType.Normal);
+			string AM_PM = "";
+			if(item.TimeHour < 12) {
+				AM_PM = "AM";
+			} else {
+				AM_PM = "PM";
+			}
+			view.SetText (item.Name==""?"<new task>":item.Name + "   " + item.DueDate.ToShortDateString()+"   " + item.TimeHour.ToString() + ":" + item.TimeMinute.ToString() + AM_PM, TextView.BufferType.Normal);
 			view.Checked = item.Done;
 			
 			//Finally return the view
