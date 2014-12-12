@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.1" package="com.xamarin.samples.HWPlannerdroid" android:versionCode="2">
-  <application android:debuggable="true" android:icon="@drawable/ic_launcher" android:label="HWPlanner" android:name="mono.android.app.Application">
+  <application android:debuggable="true" android:icon="@drawable/ic_launcher" android:label="HWPlanner" android:largeHeap="true" android:name="mono.android.app.Application">
     <activity android:icon="@drawable/ic_launcher" android:label="Homework Planner" android:name="hwplannerandroid.screens.HomeScreen">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />

@@ -179,6 +179,10 @@ namespace HWPlannerAndroid.Screens {
 			HWPlanner.BL.Managers.HWManager.SaveHW(task);
 
 
+			//Getting the notification set up
+			DateTime _currentTime = DateTime.Now;
+			int notifyHour = hour - _currentTime.Hour;
+			int notifyMinute = minute - _currentTime.Minute;
 			//Context.getSystemService (Context.ALARM_SERVICE);
 			// Build the notification
 			NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
@@ -186,7 +190,7 @@ namespace HWPlannerAndroid.Screens {
 				// .SetContentIntent(resultPendingIntent) // start up this activity when the user clicks the intent.
 				.SetContentTitle("Due Date Alert") // Set the title
 				.SetSmallIcon(HWAndroid.Resource.Drawable.bluebutton) // This is the icon to display
-				.SetContentText(String.Format("Your HW is due in 1 minute")); // the message to display.
+				.SetContentText(String.Format("Your HW is due in" + notifyHour.ToString() + " hour(s) and " + notifyMinute.ToString() + " minute(s)")); // the message to display.
 
 			// Finally publish the notification
 			NotificationManager notificationManager = (NotificationManager)GetSystemService(Context.NotificationService);
