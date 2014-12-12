@@ -1,14 +1,14 @@
 # Version: 8.4.0.16 (80e9ff7)
-# [first argument, ignore] # /Users/student/Desktop/GitHub/359_HW_App/TaskyiOS/bin/iPhoneSimulator/Debug/mtouch.exe
+# [first argument, ignore] # /Users/student/Desktop/359_HW_Planner/TaskyiOS/bin/iPhoneSimulator/Debug/mtouch.exe
 /Library/Frameworks/Xamarin.iOS.framework/Versions/8.4.0.16/bin/mtouch \
 	-sdkroot \
 	/Applications/Xcode.app/Contents/Developer \
 	--cache \
-	/Users/student/Desktop/GitHub/359_HW_App/TaskyiOS/obj/iPhoneSimulator/Debug/mtouch-cache \
+	/Users/student/Desktop/359_HW_Planner/TaskyiOS/obj/iPhoneSimulator/Debug/mtouch-cache \
 	--nomanifest \
 	--nosign \
 	-sim \
-	/Users/student/Desktop/GitHub/359_HW_App/TaskyiOS/bin/iPhoneSimulator/Debug/HWiOS.app \
+	/Users/student/Desktop/359_HW_Planner/TaskyiOS/bin/iPhoneSimulator/Debug/HWiOS.app \
 	-r \
 	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/2.1/System.dll \
 	-r \
@@ -24,8 +24,8 @@
 	-debug \
 	-nolink \
 	-sdk \
-	8.0 \
+	8.1 \
 	-targetver \
 	7.0 \
 	--abi=i386 \
-	/Users/student/Desktop/GitHub/359_HW_App/TaskyiOS/bin/iPhoneSimulator/Debug/TaskyiOS.exe \
+	/Users/student/Desktop/359_HW_Planner/TaskyiOS/bin/iPhoneSimulator/Debug/TaskyiOS.exe \

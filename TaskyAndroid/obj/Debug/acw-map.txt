@@ -1,3 +1,0 @@
-HWPlannerAndroid.Screens.HomeScreen;hwplannerandroid.screens.HomeScreen
-HWPlannerAndroid.Adapters.HWListAdapter;hwplannerandroid.adapters.HWListAdapter
-HWPlannerAndroid.Screens.HWDetailsScreen;hwplannerandroid.screens.HWDetailsScreen

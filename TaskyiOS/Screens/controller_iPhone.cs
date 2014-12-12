@@ -53,7 +53,8 @@ namespace HWPlanner.Screens {
 			currentHW.Notes = hwDialog.Notes;
 
 			//Added these properties
-			currentHW.DueDate = hwDialog.DueDate.AddHours(-6);		//For Some Reason it's adding 6 Hours to the DueDate when saving??
+			//currentHW.DueDate = hwDialog.DueDate.AddHours(-6);		//For Some Reason it's adding 6 Hours to the DueDate display
+			currentHW.DueDate = hwDialog.DueDate;
 			currentHW.CourseName = hwDialog.CourseName;
 
 			currentHW.Done = hwDialog.Done;
@@ -65,7 +66,7 @@ namespace HWPlanner.Screens {
 			var notification = new UILocalNotification();
 
 			// set the fire date (the date time in which it will fire)
-			notification.FireDate = currentHW.DueDate.AddMinutes (-1);
+			notification.FireDate = currentHW.DueDate.AddMinutes (-2);
 
 			// configure the alert stuff
 			notification.AlertAction = "Homework Alert";
