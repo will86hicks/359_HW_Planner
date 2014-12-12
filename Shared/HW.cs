@@ -12,6 +12,8 @@ namespace HWPlanner.BL
 		public HW ()
 		{
 			DueDate = DateTime.Today;
+			TimeHour = DateTime.Now.Hour;
+			TimeMinute = DateTime.Now.Minute;
 		}
 
 		[PrimaryKey, AutoIncrement]
@@ -21,6 +23,8 @@ namespace HWPlanner.BL
 
 
 		public DateTime DueDate{ get; set; }
+		public int TimeHour{ get; set; }
+		public int TimeMinute{ get; set; }
 		public string CourseName{ get; set; }
 		 
 		// new property

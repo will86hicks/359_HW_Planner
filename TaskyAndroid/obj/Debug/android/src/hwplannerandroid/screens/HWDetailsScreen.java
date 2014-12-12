@@ -10,8 +10,9 @@ public class HWDetailsScreen
 	static {
 		__md_methods = 
 			"n_onCreate:(Landroid/os/Bundle;)V:GetOnCreate_Landroid_os_Bundle_Handler\n" +
+			"n_onCreateDialog:(I)Landroid/app/Dialog;:GetOnCreateDialog_IHandler\n" +
 			"";
-		mono.android.Runtime.register ("HWPlannerAndroid.Screens.HWDetailsScreen, TaskyAndroid, Version=1.0.5458.27193, Culture=neutral, PublicKeyToken=null", HWDetailsScreen.class, __md_methods);
+		mono.android.Runtime.register ("HWPlannerAndroid.Screens.HWDetailsScreen, HWAndroid, Version=1.0.5459.1040, Culture=neutral, PublicKeyToken=null", HWDetailsScreen.class, __md_methods);
 	}
 
 
@@ -19,7 +20,7 @@ public class HWDetailsScreen
 	{
 		super ();
 		if (getClass () == HWDetailsScreen.class)
-			mono.android.TypeManager.Activate ("HWPlannerAndroid.Screens.HWDetailsScreen, TaskyAndroid, Version=1.0.5458.27193, Culture=neutral, PublicKeyToken=null", "", this, new java.lang.Object[] {  });
+			mono.android.TypeManager.Activate ("HWPlannerAndroid.Screens.HWDetailsScreen, HWAndroid, Version=1.0.5459.1040, Culture=neutral, PublicKeyToken=null", "", this, new java.lang.Object[] {  });
 	}
 
 
@@ -29,6 +30,14 @@ public class HWDetailsScreen
 	}
 
 	private native void n_onCreate (android.os.Bundle p0);
+
+
+	public android.app.Dialog onCreateDialog (int p0)
+	{
+		return n_onCreateDialog (p0);
+	}
+
+	private native android.app.Dialog n_onCreateDialog (int p0);
 
 	java.util.ArrayList refList;
 	public void monodroidAddReference (java.lang.Object obj)

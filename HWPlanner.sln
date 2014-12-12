@@ -45,7 +45,7 @@ Global
 		{82F04C1E-2F0D-4396-ADC3-BC9EADEE8E7E}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = TaskyiOS\HWiOS.csproj
+		StartupItem = TaskyAndroid\HWAndroid.csproj
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Shared\Shared.projitems*{d140c41e-62e4-4c7c-ae67-6cf2b136e19c}*SharedItemsImports = 13

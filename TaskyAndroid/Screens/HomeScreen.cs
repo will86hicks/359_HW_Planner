@@ -6,8 +6,11 @@ using Android.OS;
 using Android.Views;
 using Android.Widget;
 using HWPlanner.BL;
+using System;
+using System.Linq;
+using Java.Lang;
 
-namespace HWPlannerAndroid {
+namespace HWPlannerAndroid.Screens {
 	[Activity (Label = "HWPlanner", MainLauncher = true, Icon="@drawable/ic_launcher")]			
 	public class HomeScreen : Activity {
 		protected Adapters.HWListAdapter taskList;
@@ -25,17 +28,17 @@ namespace HWPlannerAndroid {
 			  IViewParent parent = titleView.Parent;
 			  if (parent != null && (parent is View)) {
 			    View parentView = (View)parent;
-			    parentView.SetBackgroundColor(Color.Rgb(0x26, 0x75 ,0xFF)); //38, 117 ,255
+			    parentView.SetBackgroundColor(Color.Rgb(0xFF, 0xFF ,0xFF)); //38, 117 ,255
 			  }
 			}
 
 
 			// set our layout to be the home screen
-			SetContentView(Resource.Layout.HomeScreen);
+			SetContentView(HWAndroid.Resource.Layout.HomeScreen);
 
 			//Find our controls
-			taskListView = FindViewById<ListView> (Resource.Id.lstHWs);
-			addHWButton = FindViewById<Button> (Resource.Id.btnAddHW);
+			taskListView = FindViewById<ListView> (HWAndroid.Resource.Id.lstHWs);
+			addHWButton = FindViewById<Button> (HWAndroid.Resource.Id.btnAddHW);
 
 			// wire up add task button handler
 			if(addHWButton != null) {
@@ -58,7 +61,7 @@ namespace HWPlannerAndroid {
 		{
 			base.OnResume ();
 
-			tasks = HWPlanner.BL.Managers.HWManager.GetHWs();
+			tasks = HWPlanner.BL.Managers.HWManager.GetHWs().OrderBy(e=>e.DueDate).ToList();
 			
 			// create our adapter
 			taskList = new Adapters.HWListAdapter(this, tasks);

@@ -67,7 +67,7 @@ public class MonoPackageManager {
 
 class MonoPackageManager_Resources {
 	public static final String[] Assemblies = new String[]{
-		"TaskyAndroid.dll",
+		"HWAndroid.dll",
 	};
 	public static final String[] Dependencies = new String[]{
 	};
