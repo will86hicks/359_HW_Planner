@@ -38,7 +38,7 @@ namespace HWPlannerAndroid.Screens {
 			  IViewParent parent = titleView.Parent;
 			  if (parent != null && (parent is View)) {
 			    View parentView = (View)parent;
-			    parentView.SetBackgroundColor(Color.Rgb(0x26, 0x75 ,0xFF)); //38, 117 ,255
+			    parentView.SetBackgroundColor(Color.Rgb(0xFF, 0xFF ,0xFF)); //38, 117 ,255
 			  }
 			}
 
