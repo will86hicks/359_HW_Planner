@@ -11,9 +11,30 @@ namespace HWPlanner {
 		UIWindow window;
 		UINavigationController navController;
 		UITableViewController homeViewController;
-		
+
+
+
+		public override void ReceivedLocalNotification(UIApplication application, UILocalNotification notification)
+		{
+			// show an alert
+			new UIAlertView(notification.AlertAction, notification.AlertBody, null, "OK", null).Show();
+
+			// reset our badge
+			UIApplication.SharedApplication.ApplicationIconBadgeNumber = 0;
+		}
+
+
 		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
 		{
+
+			//Change the settings of the App to allow notifications.
+			var settings = UIUserNotificationSettings.GetSettingsForTypes(
+				UIUserNotificationType.Alert
+				| UIUserNotificationType.Badge
+				| UIUserNotificationType.Sound,
+				new NSSet());
+			UIApplication.SharedApplication.RegisterUserNotificationSettings(settings);
+
 			// create a new window instance based on the screen size
 			window = new UIWindow (UIScreen.MainScreen.Bounds);
 			
@@ -39,6 +60,21 @@ namespace HWPlanner {
 			navController.PushViewController(homeViewController, false);
 			window.RootViewController = navController;
 			window.MakeKeyAndVisible ();
+
+			if (options != null)
+			{
+				// check for a local notification
+				if (options.ContainsKey(UIApplication.LaunchOptionsLocalNotificationKey))
+				{
+					var localNotification = options[UIApplication.LaunchOptionsLocalNotificationKey] as UILocalNotification;
+					if (localNotification != null)
+					{
+						new UIAlertView(localNotification.AlertAction, localNotification.AlertBody, null, "OK", null).Show();
+						// reset our badge
+						UIApplication.SharedApplication.ApplicationIconBadgeNumber = 0;
+					}
+				}
+			}
 			
 			return true;
 		}

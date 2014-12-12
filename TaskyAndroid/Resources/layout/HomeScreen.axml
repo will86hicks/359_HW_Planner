@@ -4,12 +4,12 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
     <Button
-        android:id="@+id/btnAddHW"
-        android:text="Add HW"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+        android:text="Add Homework"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnAddHW" />
     <ListView
-        android:id="@+id/lstTasks"
+        android:id="@+id/lstHWs"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" />
 </LinearLayout>

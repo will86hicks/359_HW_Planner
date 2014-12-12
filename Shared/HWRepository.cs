@@ -21,6 +21,7 @@ namespace HWPlanner.DAL {
 			
 			// instantiate the database	
 			db = new HWPlanner.DL.HWDatabase(dbLocation);
+			//db.Table<HW>().OrderBy (me.db.GetItem<DateTime>());
 		}
 		
 		public static string DatabaseFilePath {
@@ -59,7 +60,8 @@ namespace HWPlanner.DAL {
 
 
 
-
+				Console.WriteLine ("HELLLLLLLLLLLLLLLLLLO");
+				Console.WriteLine (path.ToString());
 				return path;	
 			}
 		}

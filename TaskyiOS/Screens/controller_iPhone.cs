@@ -8,7 +8,7 @@ using HWPlanner.BL;
 
 namespace HWPlanner.Screens {
 	public class controller_iPhone : DialogViewController {
-		List<HW> tasks;
+		List<HW> hws;
 		
 		public controller_iPhone () : base (UITableViewStyle.Plain, null)
 		{
@@ -19,32 +19,67 @@ namespace HWPlanner.Screens {
 		{
 			NavigationItem.SetRightBarButtonItem (new UIBarButtonItem (UIBarButtonSystemItem.Add), false);
 			NavigationItem.RightBarButtonItem.Clicked += (sender, e) => { ShowHWDetails(new HW()); };
+
+			/*UILocalNotification notification = new UILocalNotification();
+			var x = DateTime.Now;
+			notification.FireDate = DateTime.Now.AddSeconds(5);
+			notification.AlertAction = "View Alert";
+			notification.AlertBody = "Your one minute alert has fired!";
+			UIApplication.SharedApplication.ScheduleLocalNotification(notification);*/
+
 		}
 		
 
 		// MonoTouch.Dialog individual HWDetails view (uses /AL/HWDialog.cs wrapper class)
 		LocalizableBindingContext context;
-		HWDialog taskDialog;
+		HWDialog hwDialog;
 		HW currentHW;
 		DialogViewController detailsScreen;
-		protected void ShowHWDetails (HW task)
+		protected void ShowHWDetails (HW hw)
 		{
-			currentHW = task;
-			taskDialog = new HWDialog (task);
+			currentHW = hw;
+			hwDialog = new HWDialog (hw);
 			
-			var title = MonoTouch.Foundation.NSBundle.MainBundle.LocalizedString ("HW Details", "HW Details");
-			context = new LocalizableBindingContext (this, taskDialog, title);
+			var title = MonoTouch.Foundation.NSBundle.MainBundle.LocalizedString ("Homework Assignment Details", "Homework Assignment Details");
+			context = new LocalizableBindingContext (this, hwDialog, title);
 			detailsScreen = new DialogViewController (context.Root, true);
 			ActivateController(detailsScreen);
+
 		}
 		public void SaveHW()
 		{
 			context.Fetch (); // re-populates with updated values
-			currentHW.Name = taskDialog.Name;
-			currentHW.Notes = taskDialog.Notes;
-			currentHW.Done = taskDialog.Done;
+			currentHW.Name = hwDialog.Name;
+			currentHW.Notes = hwDialog.Notes;
+
+			//Added these properties
+			currentHW.DueDate = hwDialog.DueDate.AddHours(-6);		//For Some Reason it's adding 6 Hours to the DueDate when saving??
+			currentHW.CourseName = hwDialog.CourseName;
+
+			currentHW.Done = hwDialog.Done;
 			BL.Managers.HWManager.SaveHW(currentHW);
 			NavigationController.PopViewControllerAnimated (true);
+
+
+			// create the notification
+			var notification = new UILocalNotification();
+
+			// set the fire date (the date time in which it will fire)
+			notification.FireDate = currentHW.DueDate.AddMinutes (-1);
+
+			// configure the alert stuff
+			notification.AlertAction = "Homework Alert";
+			notification.AlertBody = currentHW.Name + " is due in one minute!";
+
+			// modify the badge
+			notification.ApplicationIconBadgeNumber = 1;
+
+			// set the sound to be the default sound
+			notification.SoundName = UILocalNotification.DefaultSoundName;
+
+			// schedule it
+			UIApplication.SharedApplication.ScheduleLocalNotification(notification);
+
 			//context.Dispose (); // per documentation
 		}
 		public void DeleteHW ()
@@ -66,19 +101,21 @@ namespace HWPlanner.Screens {
 		
 		protected void PopulateTable ()
 		{
-			tasks = BL.Managers.HWManager.GetHWs ().ToList ();
-			var newHW = MonoTouch.Foundation.NSBundle.MainBundle.LocalizedString ("<new task>", "<new task>");
-			Root = new RootElement ("HWPlanner") {
+			hws = BL.Managers.HWManager.GetHWs ().OrderBy(e=>e.DueDate).ToList ();
+			var newHW = MonoTouch.Foundation.NSBundle.MainBundle.LocalizedString ("<new hw>", "<new hw>");
+			Root = new RootElement ("HomeWork Planner") {
 				new Section() {
-					from t in tasks
-					select (Element) new CheckboxElement((t.Name==""?newHW:t.Name), t.Done)
+					from h in hws
+					select (Element) new CheckboxElement((h.Name==""?newHW:h.Name + " " + h.DueDate.ToShortDateString()), h.Done)
 				}
 			}; 
 		}
 		public override void Selected (MonoTouch.Foundation.NSIndexPath indexPath)
 		{
-			var task = tasks[indexPath.Row];
-			ShowHWDetails(task);
+			var hw = hws[indexPath.Row];
+			ShowHWDetails(hw);
+
+
 		}
 		public override Source CreateSizingSource (bool unevenRows)
 		{
@@ -86,7 +123,7 @@ namespace HWPlanner.Screens {
 		}
 		public void DeleteHWRow(int rowId)
 		{
-			BL.Managers.HWManager.DeleteHW(tasks[rowId].ID);
+			BL.Managers.HWManager.DeleteHW(hws[rowId].ID);
 		}
 	}
 }
