@@ -6,6 +6,7 @@ using Android.OS;
 using Android.Views;
 using Android.Widget;
 using HWPlanner.BL;
+using System;
 
 namespace HWPlannerAndroid.Screens {
 	[Activity (Label = "HWPlanner", MainLauncher = true, Icon="@drawable/ic_launcher")]			
@@ -25,17 +26,17 @@ namespace HWPlannerAndroid.Screens {
 			  IViewParent parent = titleView.Parent;
 			  if (parent != null && (parent is View)) {
 			    View parentView = (View)parent;
-			    parentView.SetBackgroundColor(Color.Rgb(0x26, 0x75 ,0xFF)); //38, 117 ,255
+			    parentView.SetBackgroundColor(Color.Rgb(0xDC, 0x14 ,0x3C)); //38, 117 ,255
 			  }
 			}
 
 
 			// set our layout to be the home screen
-			SetContentView(Resource.Layout.HomeScreen);
+			SetContentView(HWAndroid.Resource.Layout.HomeScreen);
 
 			//Find our controls
-			taskListView = FindViewById<ListView> (Resource.Id.lstHWs);
-			addHWButton = FindViewById<Button> (Resource.Id.btnAddHW);
+			taskListView = FindViewById<ListView> (HWAndroid.Resource.Id.lstHWs);
+			addHWButton = FindViewById<Button> (HWAndroid.Resource.Id.btnAddHW);
 
 			// wire up add task button handler
 			if(addHWButton != null) {

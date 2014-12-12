@@ -4,7 +4,7 @@ using Android.OS;
 using Android.Widget;
 using Android.Graphics;
 using Android.Views;
-
+using System;
 using HWPlanner.BL;
 
 namespace HWPlannerAndroid.Screens {
@@ -16,8 +16,18 @@ namespace HWPlannerAndroid.Screens {
 		protected EditText notesTextEdit = null;
 		protected EditText nameTextEdit = null;
 		protected Button saveButton = null;
+		protected Button dateButton = null;
 		CheckBox doneCheckbox;
-		
+		//Setting up date
+		DateTime _date;
+		DateTime time = DateTime.Today;
+		//setting up time
+		private TextView time_display;
+		protected Button timeButton;
+		private int hour;
+		private int minute;
+		const int TIME_DIALOG_ID = 1;
+
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
@@ -37,14 +47,15 @@ namespace HWPlannerAndroid.Screens {
 			}
 			
 			// set our layout to be the home screen
-			SetContentView(Resource.Layout.HWDetails);
-			nameTextEdit = FindViewById<EditText>(Resource.Id.txtName);
-			notesTextEdit = FindViewById<EditText>(Resource.Id.txtNotes);
-			saveButton = FindViewById<Button>(Resource.Id.btnSave);
-			doneCheckbox = FindViewById<CheckBox>(Resource.Id.chkDone);
-			
+			SetContentView(HWAndroid.Resource.Layout.HWDetails);
+			nameTextEdit = FindViewById<EditText>(HWAndroid.Resource.Id.txtName);
+			notesTextEdit = FindViewById<EditText>(HWAndroid.Resource.Id.txtNotes);
+			saveButton = FindViewById<Button>(HWAndroid.Resource.Id.btnSave);
+			doneCheckbox = FindViewById<CheckBox>(HWAndroid.Resource.Id.chkDone);
+			dateButton = FindViewById<Button> (HWAndroid.Resource.Id.btnDueDate);
+
 			// find all our controls
-			cancelDeleteButton = FindViewById<Button>(Resource.Id.btnCancelDelete);
+			cancelDeleteButton = FindViewById<Button>(HWAndroid.Resource.Id.btnCancelDelete);
 			
 			
 			// set the cancel delete based on whether or not it's an existing task
@@ -62,13 +73,72 @@ namespace HWPlannerAndroid.Screens {
 			// button clicks 
 			cancelDeleteButton.Click += (sender, e) => { CancelDelete(); };
 			saveButton.Click += (sender, e) => { Save(); };
-		}
+			//due date button
+			dateButton.Click += delegate {
+				ShowDialog (0);
+			} ;
 
+			//make current date the date
+			_date = task.DueDate;
+			if (_date >= time) {
+				dateButton.Text = _date.ToString ("d");
+			} else {
+				dateButton.Text = time.AddDays (1.0).ToString();
+			}
+
+			//TIME!!!
+			// Capture our View elements
+			//time_display = FindViewById<TextView> (HWAndroid.Resource.Id.timeDisplay);
+			timeButton = FindViewById<Button> (HWAndroid.Resource.Id.DueTimeButton);
+
+			// Add a click listener to the button
+			timeButton.Click += (o, e) => ShowDialog (TIME_DIALOG_ID);
+
+			// Get the current time
+			hour = DateTime.Now.Hour;
+			minute = DateTime.Now.Minute;
+
+			// Display the current date
+			UpdateDisplay ();
+		}
+		private void UpdateDisplay ()
+		{
+			string time = string.Format ("{0}:{1}", hour, minute.ToString ().PadLeft (2, '0'));
+			timeButton.Text = time;
+		}
+		protected override Dialog OnCreateDialog (int id)
+		{
+			if (id == 0) {
+				return new DatePickerDialog (this, HandleDateSet, _date.Year, _date.Month - 1, _date.Day); 
+			} 
+			if (id == TIME_DIALOG_ID)
+				return new TimePickerDialog (this, TimePickerCallback, hour, minute, false);
+			else {
+				return null;
+			}
+		}
+		void HandleDateSet (object sender, DatePickerDialog.DateSetEventArgs e)
+		{
+			_date = e.Date;
+			var dateButton = FindViewById<Button> (HWAndroid.Resource.Id.btnDueDate);
+			dateButton.Text = _date.ToString ("d");
+		}
+		private void TimePickerCallback (object sender, TimePickerDialog.TimeSetEventArgs e)
+		{
+			hour = e.HourOfDay;
+			minute = e.Minute;
+			UpdateDisplay ();
+		}
 		protected void Save()
 		{
 			task.Name = nameTextEdit.Text;
 			task.Notes = notesTextEdit.Text;
 			task.Done = doneCheckbox.Checked;
+			if (_date >= time) {
+				task.DueDate = _date;
+			} else {
+				task.DueDate = time.AddDays(1.0);
+			}
 			HWPlanner.BL.Managers.HWManager.SaveHW(task);
 			Finish();
 		}

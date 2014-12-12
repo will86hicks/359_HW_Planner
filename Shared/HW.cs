@@ -1,6 +1,6 @@
 using HWPlanner.BL.Contracts;
 using HWPlanner.DL.SQLite;
-
+using System;
 namespace HWPlanner.BL
 {
 	/// <summary>
@@ -10,6 +10,7 @@ namespace HWPlanner.BL
 	{
 		public HW ()
 		{
+			DueDate = DateTime.Today;
 		}
 
 		[PrimaryKey, AutoIncrement]
@@ -18,6 +19,10 @@ namespace HWPlanner.BL
 		public string Notes { get; set; }
 		// new property
 		public bool Done { get; set; }
+		public DateTime DueDate { get; set; }
+		public int TimeHour { get; set; }
+		public int TimeMinute { get; set;}
+		public string CourseName { get; set; }
 	}
 }
 

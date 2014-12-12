@@ -1,17 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone4s.8.0" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Shared/Contracts/BusinessEntityBase.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.avd442v2" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="TaskyAndroid/Screens/HWDetailsScreen.cs">
     <Files>
-      <File FileName="Shared/HWManager.cs" Line="1" Column="1" />
-      <File FileName="Shared/HW.cs" Line="1" Column="1" />
-      <File FileName="Shared/HWDatabase.cs" Line="1" Column="1" />
-      <File FileName="Shared/HWRepository.cs" Line="1" Column="1" />
-      <File FileName="Shared/SQLite.cs" Line="1" Column="1" />
-      <File FileName="TaskyiOS/Screens/controller_iPhone.cs" Line="1" Column="1" />
-      <File FileName="TaskyiOS/AppDelegate.cs" Line="1" Column="1" />
-      <File FileName="TaskyiOS/Main.cs" Line="1" Column="1" />
-      <File FileName="Shared/Contracts/BusinessEntityBase.cs" Line="30" Column="30" />
-      <File FileName="Shared/Contracts/IBusinessEntity.cs" Line="1" Column="1" />
+      <File FileName="TaskyAndroid/Screens/HomeScreen.cs" Line="19" Column="19" />
+      <File FileName="TaskyAndroid/Screens/HWDetailsScreen.cs" Line="35" Column="35" />
+      <File FileName="Shared/HW.cs" Line="41" Column="41" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -20,5 +13,5 @@
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.TaskyAndroid MonoForAntroid.PreferredDevice="Nexus 4" />
+  <MonoDevelop.Ide.ItemProperties.HWAndroid MonoForAntroid.PreferredDevice="Nexus 4" />
 </Properties>
