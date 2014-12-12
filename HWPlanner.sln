@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HWiOS", "HWPlanneriOS\HWiOS.csproj", "{08FAE550-E302-4022-A871-17E0462E99F3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HWiOS", "TaskyiOS\HWiOS.csproj", "{08FAE550-E302-4022-A871-17E0462E99F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HWAndroid", "HWPlannerAndroid\HWAndroid.csproj", "{82F04C1E-2F0D-4396-ADC3-BC9EADEE8E7E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HWAndroid", "TaskyAndroid\HWAndroid.csproj", "{82F04C1E-2F0D-4396-ADC3-BC9EADEE8E7E}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Shared", "Shared\Shared.shproj", "{D140C41E-62E4-4C7C-AE67-6CF2B136E19C}"
 EndProject
@@ -45,7 +45,7 @@ Global
 		{82F04C1E-2F0D-4396-ADC3-BC9EADEE8E7E}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = HWPlannerAndroid\HWAndroid.csproj
+		StartupItem = TaskyAndroid\HWAndroid.csproj
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Shared\Shared.projitems*{d140c41e-62e4-4c7c-ae67-6cf2b136e19c}*SharedItemsImports = 13
